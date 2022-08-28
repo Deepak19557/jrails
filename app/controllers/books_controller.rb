@@ -1,21 +1,18 @@
 class BooksController < ApplicationController
+	skip_before_action :verify_authenticity_token
 
 	def new_book
-		debugger
 		@book1 = Book.new	
 	end
 
 	def create_book
     @book = Book.create(books_param)
-    # if @book.save
-    #   redirect_to '/books'
-    # else
-    #   render 'new_book'
-    # end
+	end
 
-    # respond_to do |format|
-    #   format.
-    # end
+	def update_book
+		@books = Book.find params[:id]
+		debugger
+    @book = @books.update(books_param)
 	end
 
 	def books
@@ -28,7 +25,7 @@ class BooksController < ApplicationController
 	end
 
 	def edit_book
-		
+		@book = Book.find params[:id]
 	end
 
 	def delete_book

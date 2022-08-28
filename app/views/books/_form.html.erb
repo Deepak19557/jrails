@@ -1,12 +1,35 @@
-<%= form_for @book1, url: :create_book, method: :post, remote: :true do |f| %>
-  <%= f.label 'Book Name' %>
-  <%= f.text_field :book_name %>
-  <br /> <br />
-  <%= f.label 'Author' %>
-  <%= f.text_field :author %>
-  <br /> <br />
-  <%= f.label 'Available Book' %>
-  <%= f.number_field :available_book %>
-  <br /> <br />
-  <%= submit_tag "Book Bnao" %>
-<% end %>
+
+<label for="fname">First name:</label><br>
+<input type="text" id="fname" name="book[book_name]" value = "<%=(@book.book_name || "") %>" ><br>
+<label for="lname">Last name:</label><br>
+<input type="text" id="lname" name="book[author]" value = "<%=(@book.author || "") %>"><br><br>
+
+<input type="button" data = "<%= (@book.id || "")%>" id="<%= @book.present? ? 'edit_form_ajax' : 'new_form_ajax'%>" value="Submit">
+
+
+
+<script type="text/javascript">
+  $("#new_form_ajax").click(function(){
+    book_name = $("#fname").val();
+    author = $("#lname").val();
+    book_params = {"book": {"book_name": book_name, "author": author }}
+    $.ajax({
+      url: "/create_book",
+      method: "post",
+      data: book_params,
+    })
+  });
+
+  $("#edit_form_ajax").click(function(){
+    book_name = $("#fname").val();
+    author = $("#lname").val();
+    ids = $(this).attr('data')
+    debugger
+    book_params = {"book": {"book_name": book_name, "author": author }}
+    $.ajax({
+      url: "/update_book/" + ids,
+      method: "patch",
+      data: book_params,
+    })
+  });
+</script>
