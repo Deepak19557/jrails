@@ -1,0 +1,12 @@
+<%= form_for @book1, url: :create_book, method: :post, remote: :true do |f| %>
+  <%= f.label 'Book Name' %>
+  <%= f.text_field :book_name %>
+  <br /> <br />
+  <%= f.label 'Author' %>
+  <%= f.text_field :author %>
+  <br /> <br />
+  <%= f.label 'Available Book' %>
+  <%= f.number_field :available_book %>
+  <br /> <br />
+  <%= submit_tag "Book Bnao" %>
+<% end %>

@@ -1,0 +1,20 @@
+<br><br><br>
+<%= render 'modal' %>
+
+<%= link_to "Add New Book", new_book_path, remote: true %>
+<table border="3" id="book_table">
+  <tr>
+    <th>Book-Name</th>
+    <th>Author-Name</th>
+    <th>No. of Books</th>
+  </tr>
+
+  <% @books.each do |book| %>
+    <tr>
+      <td><%= book.book_name %></td>
+      <td><%= book.author %></td>
+      <td><%= book.available_book %></td>
+
+    </tr>
+  <% end %>
+</table>
