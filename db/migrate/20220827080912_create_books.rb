@@ -4,7 +4,6 @@ class CreateBooks < ActiveRecord::Migration[6.0]
       t.string :book_name
       t.string :author
       t.integer :available_book
-
       t.timestamps
     end
   end
