@@ -11,7 +11,6 @@ class BooksController < ApplicationController
 
 	def update_book
 		@books = Book.find params[:id]
-		debugger
     @book = @books.update(books_param)
 	end
 
