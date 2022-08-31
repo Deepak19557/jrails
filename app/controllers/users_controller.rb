@@ -3,6 +3,8 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
+    @user = User.new
+    
     @users = User.all
   end
 
@@ -11,11 +13,8 @@ class UsersController < ApplicationController
   end
 
   # GET /users/new
-  def new
+  def new 
     @user = User.new
-    respond_to do |format|
-      format.js
-    end
   end
 
   # GET /users/1/edit

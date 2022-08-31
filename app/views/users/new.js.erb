@@ -1,2 +1,7 @@
-$("#newUserForm").html("<%= escape_javascript render('form', user: @user) %>");
+ // $("#newUserModal").modal("show");
+ // $("#newUserForm").html("<%= escape_javascript render('form', user: @user) %>");
+
+debugger
+
+ $("#staticBackdrop .modal-body").html("<%= j render partial: 'form'%>");
 

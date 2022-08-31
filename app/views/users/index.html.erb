@@ -1,5 +1,5 @@
-<p id="notice"><%= notice %></p>
-
+<!-- <p id="notice"><%= notice %></p>
+ 
 <h1>Users</h1>
 
 <table>
@@ -13,33 +13,118 @@
   </thead>
 
   <tbody>
-    <% @users.each do |user| %>
+    <%# @users.each do |user| %>
       <tr>
+        <td><%#= user.first_name %></td>
+        <td><%#= user.last_name %></td>
+        <td><%#= user.age %></td>
+        <td><%#= link_to 'Show', user %></td>
+        <td><%#= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%#= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <%# end %>
+  </tbody>
+</table>
+
+<br>
+
+
+
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
+ -->
+
+
+
+
+<!-- 
+<script type="text/javascript">
+  $(".new_user").click(function(){
+    $.ajax({
+      method: "get",
+      url: "/users/new"
+    });
+  });
+</script>
+
+ -->
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Launch static backdrop modal
+</button> -->
+
+<!-- Modal -->
+<!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+<%= link_to "New userd", new_user_path, class: "btn btn-primary", method: :get , remote: true ,:"data-bs-toggle" =>"modal", :"data-bs-target" =>  "#staticBackdrop"%>
+
+<%= link_to "New", new_user_path %>
+
+<p id="notice"><%= notice %></p>
+<%#= render "modal" %>
+
+<h1>users</h1>
+
+
+<table border="3" id="user_table">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last name</th>
+      <th>Age</th>
+
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr id="user_<%= user.id %>">
         <td><%= user.first_name %></td>
         <td><%= user.last_name %></td>
         <td><%= user.age %></td>
         <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_user_path(user), remote: true %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New User', new_user_path, class: "btn btn-primary btn-lg mb-4", data: { bs_toggle: 'modal', bs_target: '#newUserModal', remote: true } %>
-
-<div class="modal fade" id="newUserModal" tabindex="-1" aria-labelledby="newUserModal" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="newUserModal">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div id="newUserForm">
-        
-      </div>
-    </div>
-  </div>
-</div>
